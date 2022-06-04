@@ -1,45 +1,146 @@
-html, body {
-  height: 100%;
+
+.border-danger {
+  background: none;
+  color: rgb(230, 24, 24);
+  border: 1px solid #c91610;
+  border-radius: 70px;
+  box-shadow: 0 0 0 0 rgba(196, 14, 14, 0.5);
+  cursor: pointer;
+  font-size: 20px;
+  min-height: 65px;
+  min-width: 65px;
+  outline: none;
+  animation: pulse 1.5s infinite;
+  padding: 15px 17px;
+  transition: background, padding 500ms ease-in-out;
+}
+.border-safe {
+  background: none;
+  color: rgb(48, 230, 24);
+  border: 1px solid #45981B;
+  border-radius: 70px;
+  box-shadow: 0 0 0 0 rgba(48, 230, 24, 0.5);
+  cursor: pointer;
+  font-size: 20px;
+  min-height: 65px;
+  min-width: 65px;
+  outline: none;
+  animation: pulse 1.5s infinite;
+  padding: 15px 17px;
+  transition: background, padding 500ms ease-in-out;
+}
+.border-warn {
+  background: none;
+  color: rgb(216, 230, 24);
+  border: 1px solid #e2d515;
+  border-radius: 70px;
+  box-shadow: 0 0 0 0 rgba(216, 230, 24, 0.5);
+  cursor: pointer;
+  font-size: 20px;
+  min-height: 65px;
+  min-width: 65px;
+  outline: none;
+  animation: pulse 1.5s infinite;
+  padding: 15px 17px;
+  transition: background, padding 500ms ease-in-out;
+}
+.send2.is-loading {
+  animation: pulse 1.5s infinite;
+  padding: 15px 17px;
+}
+.send2.is-success {
+  animation: pulse 1.5s infinite;
+  padding: 15px 17px;
+}
+/* svg {
+  width: 0;
+  height: 0;
+} */
+.is-success svg {
+  height: 130px;
+  width: 130px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.check {
+  stroke-dasharray: 130px 130px;
+  stroke-dashoffset: 130px;
+  transition: stroke-dashoffset 500ms ease-in-out;
 }
 
-#chat {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.is-loading span,
+.is-success span {
+  display: none;
 }
 
-input {
-  width: 600px;
-  border: 1px solid #ddd;
-  height: 50px;
-  padding: 0 20px;
+.is-success .check {
+  stroke-dashoffset: 0px;
+}
+/* ---------------------------- */
+.animate-svg-safe svg{
+  stroke-width: 10px;
+  stroke: #45981B;
+  width: 50%;
+  height: 50%;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: svganimation 1.5s ease-in-out forwards infinite;
+
+}
+.animate-svg-danger svg{
+  stroke-width: 10px;
+  stroke: #c91610;
+  width: 50%;
+  height: 50%;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: svganimation 1.5s ease-in-out forwards infinite;
+
+}
+.animate-svg-warn svg{
+  stroke-width: 10px;
+  stroke: #e2d515;
+  width: 50%;
+  height: 50%;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: svganimation 1.5s ease-in-out forwards infinite;
+
+}
+/* ---------------------------- */
+
+@keyframes svganimation {
+  0%{
+    stroke-dashoffset: 1000;
+  }
+  50%{
+    stroke-dashoffset: 0;
+  }
+  100%{
+    stroke-dashoffset: 0;
+  }
+
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 50px rgba(69, 152, 27, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(69, 152, 27, 0);
+  }
+}
+#reset {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: none;
+  border: 1px solid white;
   font-size: 14px;
-}
-
-button {
-  width: 600px;
-  height: 50px;
-  font-size: 14px;
-  background: #069;
-  text-align: center;
-  line-height: 50px;
-  font-weight: bold;
-  color: #FFF;
-  margin-top: 10px;
-}
-
-.messages {
-  width: 600px;
-  height: 400px;
-  margin: 20px 0;
-  border: 1px solid #ddd;
-  padding: 20px;
+  color: white;
+  padding: 5px 20px;
 }

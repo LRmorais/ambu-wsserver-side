@@ -1,5 +1,6 @@
 const express = require("express");
 const http = require("http");
+const path = require('path');
 const { SerialPort, ReadlineParser } = require('serialport')
 const EventEmitter = require('events');
 EventEmitter.setMaxListeners(0)
@@ -10,6 +11,15 @@ const server = http.createServer(app);
 const socketIo = require("socket.io");
 
 const port = process.env.PORT || 4001;
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'public'))
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+app.use('/', (req, res) => {
+  res.render('index.html')
+})
 
 // Create a port
 const portSerial = new SerialPort(
@@ -46,6 +56,7 @@ let interval;
 
 
 io.on("connection", (socket) => {
+  console.log(socket.id)
   portSerial.on('error', function (err) {
     console.log('Error: ', err.message)
   })
@@ -69,7 +80,7 @@ io.on("connection", (socket) => {
 
 const getApiAndEmit = socket => {
   parser.on('data', function (data) {
-    console.log('Error: ', data)
+    // console.log('Error: ', data)
     socket.emit("FromAPI", data);
   })
 
