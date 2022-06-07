@@ -1,40 +1,22 @@
-
-.border-danger {
-  background: none;
-  color: rgb(230, 24, 24);
-  border: 1px solid #c91610;
-  border-radius: 70px;
-  box-shadow: 0 0 0 0 rgba(196, 14, 14, 0.5);
-  cursor: pointer;
-  font-size: 20px;
-  min-height: 65px;
-  min-width: 65px;
-  outline: none;
-  animation: pulse 1.5s infinite;
-  padding: 15px 17px;
-  transition: background, padding 500ms ease-in-out;
-}
-.border-safe {
-  background: none;
+.safe-color{
   color: rgb(48, 230, 24);
   border: 1px solid #45981B;
-  border-radius: 70px;
   box-shadow: 0 0 0 0 rgba(48, 230, 24, 0.5);
-  cursor: pointer;
-  font-size: 20px;
-  min-height: 65px;
-  min-width: 65px;
-  outline: none;
-  animation: pulse 1.5s infinite;
-  padding: 15px 17px;
-  transition: background, padding 500ms ease-in-out;
 }
-.border-warn {
-  background: none;
+.danger-color{
+  color: rgb(230, 24, 24);
+  border: 1px solid #c91610;
+  box-shadow: 0 0 0 0 rgba(196, 14, 14, 0.5);
+}
+.warn-color{
   color: rgb(216, 230, 24);
   border: 1px solid #e2d515;
-  border-radius: 70px;
   box-shadow: 0 0 0 0 rgba(216, 230, 24, 0.5);
+}
+
+.border-safe {
+  background: none;
+  border-radius: 70px;
   cursor: pointer;
   font-size: 20px;
   min-height: 65px;
@@ -44,61 +26,20 @@
   padding: 15px 17px;
   transition: background, padding 500ms ease-in-out;
 }
-.send2.is-loading {
-  animation: pulse 1.5s infinite;
-  padding: 15px 17px;
-}
-.send2.is-success {
-  animation: pulse 1.5s infinite;
-  padding: 15px 17px;
-}
-/* svg {
-  width: 0;
-  height: 0;
-} */
-.is-success svg {
-  height: 130px;
-  width: 130px;
-}
 
-.check {
-  stroke-dasharray: 130px 130px;
-  stroke-dashoffset: 130px;
-  transition: stroke-dashoffset 500ms ease-in-out;
-}
 
-.is-loading span,
-.is-success span {
-  display: none;
-}
-
-.is-success .check {
-  stroke-dashoffset: 0px;
-}
 /* ---------------------------- */
-.animate-svg-safe svg{
-  stroke-width: 10px;
+.svg-safe{
   stroke: #45981B;
-  width: 50%;
-  height: 50%;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: svganimation 1.5s ease-in-out forwards infinite;
-
 }
-.animate-svg-danger svg{
-  stroke-width: 10px;
+.svg-danger{
   stroke: #c91610;
-  width: 50%;
-  height: 50%;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: svganimation 1.5s ease-in-out forwards infinite;
-
 }
-.animate-svg-warn svg{
-  stroke-width: 10px;
+.svg-warn{
   stroke: #e2d515;
+}
+.animate-svg svg{
+  stroke-width: 10px;
   width: 50%;
   height: 50%;
   stroke-dasharray: 1000;
