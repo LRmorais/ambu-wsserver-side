@@ -24,23 +24,26 @@ app.use('/', (req, res) => {
 // Create a port
 const portSerial = new SerialPort(
   {
-    path: '/dev/ttyUSB0',
-    baudRate: 115200,
-    autoOpen: false,
+    path: '/dev/ttyACM0',
+    baudRate: 9600,
+    autoOpen: true,
   },
 
 )
 
-// const portSerial2 = new serialPort(
-//   '/dev/cu.usbserial-4',
-//   { baudRate: 115200 },
-// )
+const portSerial2 = new SerialPort(
+  {
+    path: '/dev/ttyUSB0',
+    baudRate: 115200,
+    autoOpen: true,
+  },
+
+)
 
 const parser = new ReadlineParser()
 portSerial.pipe(parser)
-// const parser2 = new serialPort.parsers.Readline();
-
-// portSerial2.pipe(parser2)
+const parser2 = new ReadlineParser()
+portSerial2.pipe(parser2)
 
 
 const index = require("./routes/index");
@@ -56,21 +59,14 @@ let interval;
 
 
 io.on("connection", (socket) => {
-  console.log(socket.id)
-  portSerial.on('error', function (err) {
-    console.log('Error: ', err.message)
-  })
-  portSerial.open(function (err) {
-    if (err) {
-      return console.log('Error opening port: ', err.message)
-    }
+  // portSerial2.on('edatarror', function (teste) {
+  //   console.log('Error: ', teste)
+  // })
+  
 
-  })
-  portSerial.on('open', function () {
-    console.log('open teste')
-  })
   console.log("New client connected");
   interval = setInterval(() => getApiAndEmit(socket), 500);
+  interval2 = setInterval(() => getApiAndEmit2(socket), 500);
   // getApiAndEmit(socket)
   socket.on("disconnect", () => {
     console.log("Client disconnected");
@@ -80,13 +76,16 @@ io.on("connection", (socket) => {
 
 const getApiAndEmit = socket => {
   parser.on('data', function (data) {
-    // console.log('Error: ', data)
+    // console.log(data)
     socket.emit("FromAPI", data);
   })
-
-  // parser2.on('data', (line) => {
-  //   socket.emit("FromAPI2", line);
-  // })
 };
+const getApiAndEmit2 = socket => {
+  parser2.on('data', function (data) {
+    // console.log(data)
+    socket.emit("FromAPI2", data);
+  })
+};
+
 
 server.listen(port, () => console.log(`Listening on port ${port}`));

@@ -43,7 +43,7 @@
     <div class="container">
       <div class="row">
         <div class="col center-text">
-          <p id="pressure" class="fw-bolder texts">Pressão</p>
+          <p id="pressure" class="fw-bolder texts">Pressão:</p>
         </div>
         <div class="col center-text">
           <p id="bpm" class="fw-bolder texts">BPM:</p>
@@ -74,6 +74,15 @@
     var socket = io('http://localhost:4001/')
 
     socket.on('FromAPI', function(message){
+      // let data = JSON.parse(message);
+      const pressure = document.getElementById("pressure");
+
+      pressure.innerHTML = `
+        <p id="pressure" class="fw-bolder texts">Pressão: ${message}</p>
+      `;
+      
+    })
+    socket.on('FromAPI2', function(message){
       let data = JSON.parse(message);
       const pressure = document.getElementById("pressure");
       const bpm = document.getElementById("bpm");
