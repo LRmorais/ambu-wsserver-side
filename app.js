@@ -33,7 +33,7 @@ const portSerial = new SerialPort(
 
 const portSerial2 = new SerialPort(
   {
-    path: '/dev/ttyUSB1',
+    path: '/dev/ttyUSB11',
     baudRate: 115200,
     autoOpen: true,
   },
