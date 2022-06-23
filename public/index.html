@@ -78,7 +78,7 @@
       const pressure = document.getElementById("pressure");
 
       pressure.innerHTML = `
-        <p id="pressure" class="fw-bolder texts">Pressão: ${data.pres}</p>
+        <p id="pressure" class="fw-bolder texts">Pressão: ${data.pres == null || data.pres == undefined ? 0: data.pres}</p>
       `;
       
     })
