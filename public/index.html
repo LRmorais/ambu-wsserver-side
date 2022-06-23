@@ -77,12 +77,25 @@
       let data = JSON.parse(message);
       const pressure = document.getElementById("pressure");
 
+
+      const myTimeout = setTimeout(myGreeting, 5000);
+      function myStopFunction() {
+        clearTimeout(myTimeout);
+      }
+
       pressure.innerHTML = `
         <p id="pressure" class="fw-bolder texts">Pressão: ${data.pres == null || data.pres == undefined ? 0: data.pres}</p>
       `;
+
+  
       
     })
     socket.on('FromAPI2', function(message){
+
+
+      setInterval(displayHello, 1000);
+
+      function displayHello() {
       let data = JSON.parse(message);
       const pressure = document.getElementById("pressure");
       const bpm = document.getElementById("bpm");
@@ -96,6 +109,7 @@
       saturation.innerHTML = `
         <p id="saturation" class="fw-bolder texts">Saturação: ${data.oxi == null || data.oxi == undefined ? 0: data.oxi}%</p>
       `;
+      }
 
       // if(data.oxi > 20){
       //   border.style.color = 'rgb(48, 230, 24)';
