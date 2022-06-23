@@ -91,15 +91,15 @@
       const svg = document.getElementById("svg");
       const border = document.getElementById("border");
       bpm.innerHTML = `
-        <p id="bpm" class="fw-bolder texts">BPM: ${data.cardio}</p>
+        <p id="bpm" class="fw-bolder texts">BPM: ${data.cardio == null || data.cardio == undefined ? 0: data.cardio}</p>
       `;
       saturation.innerHTML = `
-        <p id="saturation" class="fw-bolder texts">Saturação: ${data.oxi}%</p>
+        <p id="saturation" class="fw-bolder texts">Saturação: ${data.oxi == null || data.oxi == undefined ? 0: data.oxi}%</p>
       `;
 
-      if(data.oxi > 20){
-        border.style.color = 'rgb(48, 230, 24)';
-      }
+      // if(data.oxi > 20){
+      //   border.style.color = 'rgb(48, 230, 24)';
+      // }
       
     })
   </script>
