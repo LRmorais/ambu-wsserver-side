@@ -77,12 +77,6 @@
       let data = JSON.parse(message);
       const pressure = document.getElementById("pressure");
 
-
-      const myTimeout = setTimeout(myGreeting, 5000);
-      function myStopFunction() {
-        clearTimeout(myTimeout);
-      }
-
       pressure.innerHTML = `
         <p id="pressure" class="fw-bolder texts">Pressão: ${data.pres == null || data.pres == undefined ? 0: data.pres}</p>
       `;
