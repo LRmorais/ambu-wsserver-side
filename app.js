@@ -24,7 +24,7 @@ app.use('/', (req, res) => {
 // Create a port
 const portSerial = new SerialPort(
   {
-    path: '/dev/ttyUSB0',
+    path: '/dev/ttyUSB_PRESS',
     baudRate: 9600,
     autoOpen: true,
   },
@@ -33,7 +33,7 @@ const portSerial = new SerialPort(
 
 const portSerial2 = new SerialPort(
   {
-    path: '/dev/ttyUSB0',
+    path: '/dev/ttyUSB_OXIMETRO',
     baudRate: 115200,
     autoOpen: true,
   },
