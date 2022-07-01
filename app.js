@@ -31,19 +31,19 @@ const portSerial = new SerialPort(
 
 )
 
-const portSerial2 = new SerialPort(
-  {
-    path: '/dev/ttyUSB_OXIMETRO',
-    baudRate: 115200,
-    autoOpen: true,
-  },
+// const portSerial2 = new SerialPort(
+//   {
+//     path: '/dev/ttyUSB_OXIMETRO',
+//     baudRate: 115200,
+//     autoOpen: true,
+//   },
 
-)
+// )
 
 const parser = new ReadlineParser()
 portSerial.pipe(parser)
-const parser2 = new ReadlineParser()
-portSerial2.pipe(parser2)
+// const parser2 = new ReadlineParser()
+// portSerial2.pipe(parser2)
 
 
 const index = require("./routes/index");
@@ -80,12 +80,12 @@ const getApiAndEmit = socket => {
     socket.emit("FromAPI", data);
   })
 };
-const getApiAndEmit2 = socket => {
-  parser2.on('data', function (data) {
-    // console.log(data)
-    socket.emit("FromAPI2", data);
-  })
-};
+// const getApiAndEmit2 = socket => {
+//   parser2.on('data', function (data) {
+//     // console.log(data)
+//     socket.emit("FromAPI2", data);
+//   })
+// };
 
 
 server.listen(port, () => console.log(`Listening on port ${port}`));

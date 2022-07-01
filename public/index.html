@@ -46,10 +46,10 @@
           <p id="pressure" class="fw-bolder texts">Pressão:</p>
         </div>
         <div class="col center-text">
-          <p id="bpm" class="fw-bolder texts">BPM:</p>
+          <p id="bpm" class="fw-bolder texts">BPM: 80</p>
         </div>
         <div class="col center-text">
-          <p id="saturation" class="fw-bolder texts">Saturação:</p>
+          <p id="saturation" class="fw-bolder texts">Saturação: 96%</p>
         </div>
       </div>
     </div>
@@ -83,26 +83,22 @@
   
       
     })
-    socket.on('FromAPI2', function(message){
-      let data = JSON.parse(message);
-      const pressure = document.getElementById("pressure");
-      const bpm = document.getElementById("bpm");
-      const saturation = document.getElementById("saturation");
-      const pulmao = document.getElementById("pulmao-container");
-      const svg = document.getElementById("svg");
-      const border = document.getElementById("border");
-      bpm.innerHTML = `
-        <p id="bpm" class="fw-bolder texts">BPM: ${data.cardio == null || data.cardio == undefined ? 0: data.cardio}</p>
-      `;
-      saturation.innerHTML = `
-        <p id="saturation" class="fw-bolder texts">Saturação: ${data.oxi == null || data.oxi == undefined ? 0: data.oxi}%</p>
-      `;
-
-      // if(data.oxi > 20){
-      //   border.style.color = 'rgb(48, 230, 24)';
-      // }
+    // socket.on('FromAPI2', function(message){
+    //   let data = JSON.parse(message);
+    //   const pressure = document.getElementById("pressure");
+    //   const bpm = document.getElementById("bpm");
+    //   const saturation = document.getElementById("saturation");
+    //   const pulmao = document.getElementById("pulmao-container");
+    //   const svg = document.getElementById("svg");
+    //   const border = document.getElementById("border");
+    //   bpm.innerHTML = `
+    //     <p id="bpm" class="fw-bolder texts">BPM: ${data.cardio == null || data.cardio == undefined ? 0: data.cardio}</p>
+    //   `;
+    //   saturation.innerHTML = `
+    //     <p id="saturation" class="fw-bolder texts">Saturação: ${data.oxi == null || data.oxi == undefined ? 0: data.oxi}%</p>
+    //   `;
       
-    })
+    // })
   </script>
 </body>
 </html>
