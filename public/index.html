@@ -8,7 +8,7 @@
 
   <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
-  <script src="/socket.io/socket.io.js"></script>
+  <script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
 
 
   <style>
@@ -45,12 +45,12 @@
         <div class="col center-text">
           <p id="pressure" class="fw-bolder texts">Pressão:</p>
         </div>
-        <div class="col center-text">
-          <p id="bpm" class="fw-bolder texts">BPM: 80</p>
+        <!-- <div class="col center-text">
+          <p id="bpm" class="fw-bolder texts">BPM: 0</p>
         </div>
         <div class="col center-text">
-          <p id="saturation" class="fw-bolder texts">Saturação: 96%</p>
-        </div>
+          <p id="saturation" class="fw-bolder texts">Saturação: 0%</p>
+        </div> -->
       </div>
     </div>
     
@@ -76,7 +76,7 @@
     socket.on('FromAPI', function(message){
       let data = JSON.parse(message);
       const pressure = document.getElementById("pressure");
-
+      console.log(data.pres)
       pressure.innerHTML = `
         <p id="pressure" class="fw-bolder texts">Pressão: ${data.pres == null || data.pres == undefined ? 0: data.pres}</p>
       `;

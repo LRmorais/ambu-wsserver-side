@@ -24,12 +24,20 @@ app.use('/', (req, res) => {
 // Create a port
 const portSerial = new SerialPort(
   {
-    path: '/dev/ttyUSB_PRESS',
+    path: '/COM5',
     baudRate: 9600,
     autoOpen: true,
   },
 
 )
+// const portSerial = new SerialPort(
+//   {
+//     path: '/dev/ttyUSB_PRESS',
+//     baudRate: 9600,
+//     autoOpen: true,
+//   },
+
+// )
 
 // const portSerial2 = new SerialPort(
 //   {
@@ -63,10 +71,9 @@ io.on("connection", (socket) => {
   //   console.log('Error: ', teste)
   // })
   
-
   console.log("New client connected");
   interval = setInterval(() => getApiAndEmit(socket), 500);
-  interval2 = setInterval(() => getApiAndEmit2(socket), 500);
+  // interval2 = setInterval(() => getApiAndEmit2(socket), 500);
   // getApiAndEmit(socket)
   socket.on("disconnect", () => {
     console.log("Client disconnected");
