@@ -71,7 +71,7 @@
   
   <script type="text/javascript">
     var text = document.getElementById('text');
-    var socket = io('http://localhost:4001/')
+    var socket = io('http://localhost:3000/')
 
     socket.on('FromAPI', function(message){
       let data = JSON.parse(message);

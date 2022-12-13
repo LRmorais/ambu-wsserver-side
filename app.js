@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const socketIo = require("socket.io");
 
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public'))
@@ -24,7 +24,7 @@ app.use('/', (req, res) => {
 // Create a port
 // const portSerial = new SerialPort(
 //   {
-//     path: '/COM5',
+//     path: '/COM6',
 //     baudRate: 9600,
 //     autoOpen: true,
 //   },
@@ -83,7 +83,7 @@ io.on("connection", (socket) => {
 
 const getApiAndEmit = socket => {
   parser.on('data', function (data) {
-    // console.log(data)
+    console.log(data)
     socket.emit("FromAPI", data);
   })
 };
